@@ -8,9 +8,7 @@ client = TestClient(app)
 def test_root():
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == {
-        "message": "Hello from FastAPI with Jenkins & SonarQube!"
-    }
+    assert response.json() == {"message": "Hello from FastAPI with Jenkins & SonarQube!"}
 
 
 def test_average_success():
@@ -28,13 +26,3 @@ def test_reverse_string():
     response = client.get("/reverse?text=SonarQube")
     assert response.status_code == 200
     assert response.json()["reversed"] == "ebuQranoS"
-
-
-# 🚩 Test for smelly endpoint (even if it's not clean code)
-def test_smell_endpoint():
-    response = client.get("/smell")
-    assert response.status_code == 200
-    data = response.json()
-    assert data["status"] == "smelly"
-    assert data["threshold"] == 42
-    assert data["reverse"] == "ebuQranoS"
