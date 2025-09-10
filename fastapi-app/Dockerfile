@@ -3,13 +3,13 @@ FROM python:3.11-slim
 # ตั้ง working directory
 WORKDIR /app
 
-# คัดลอกและติดตั้ง dependencies
-COPY fastapi-app/requirements.txt ./requirements.txt
+# คัดลอก requirements.txt และติดตั้ง dependencies
+COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir -r requirements.txt
 
-# คัดลอกโค้ดทั้งหมด
-COPY fastapi-app ./app
+# คัดลอกโค้ดทั้งหมดเข้า container
+COPY . .
 
 # เปิด port 8000
 EXPOSE 8000
