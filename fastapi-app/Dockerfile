@@ -26,4 +26,4 @@ ENV PATH="/opt/sonar-scanner-4.9.3.74484-linux/bin:${PATH}"
 EXPOSE 8000
 
 # รัน FastAPI ด้วย uvicorn
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "fastapi-app.main:app", "--host", "0.0.0.0", "--port", "8000"]
