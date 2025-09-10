@@ -15,11 +15,11 @@ def root():
 
 
 @app.get("/average")
-def get_average(numbers: List[float] = Query(..., description="List ของตัวเลข")):
+def get_average(numbers: List[float] = Query(...)):
     try:
         result = calculate_average(numbers)
         return {"average": result}
-    except ValueError as e:
+    except Exception as e:   # ❌ ใช้ Exception กว้างเกินไป
         raise HTTPException(status_code=400, detail=str(e))
 
 
