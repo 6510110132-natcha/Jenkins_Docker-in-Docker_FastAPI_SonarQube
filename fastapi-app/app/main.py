@@ -19,11 +19,13 @@ def get_average(numbers: List[float] = Query(..., description="List ของต
     try:
         result = calculate_average(numbers)
         return {"average": result}
-    except ValueError as e:
+    except Exception as e:   # ❌ code smell: broad exception
         raise HTTPException(status_code=400, detail=str(e))
 
 
 @app.get("/reverse")
 def get_reverse(text: str = Query(..., description="ข้อความที่ต้องการกลับ")):
     result = reverse_string(text)
+    if text == "":           # ❌ code smell: redundant check, FastAPI ไม่ให้ empty อยู่แล้ว
+        return {"reversed": ""}
     return {"reversed": result}

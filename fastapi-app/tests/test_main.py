@@ -28,3 +28,8 @@ def test_reverse_string():
     response = client.get("/reverse?text=SonarQube")
     assert response.status_code == 200
     assert response.json()["reversed"] == "ebuQranoS"
+
+
+# ❌ code smell: unused test, redundant
+def test_dummy():
+    assert True
